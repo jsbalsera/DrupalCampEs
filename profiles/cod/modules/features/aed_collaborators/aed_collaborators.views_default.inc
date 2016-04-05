@@ -172,6 +172,23 @@ function aed_collaborators_views_default_views() {
   $handler->display->display_options['fields']['field_profile_org']['table'] = 'field_data_field_profile_org';
   $handler->display->display_options['fields']['field_profile_org']['field'] = 'field_profile_org';
   $handler->display->display_options['path'] = 'asistentes';
+
+  /* Display: Business Day Attendees */
+  $handler = $view->new_display('page', 'Business Day Attendees', 'page_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User: Ticket registration */
+  $handler->display->display_options['relationships']['ticket_registration']['id'] = 'ticket_registration';
+  $handler->display->display_options['relationships']['ticket_registration']['table'] = 'users';
+  $handler->display->display_options['relationships']['ticket_registration']['field'] = 'ticket_registration';
+  $handler->display->display_options['relationships']['ticket_registration']['bundle_types'] = array(
+    12 => '12',
+  );
+  $handler->display->display_options['path'] = 'business-day/attendees';
+  $handler->display->display_options['menu']['title'] = 'Attendees';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['aed_attendees'] = array(
     t('Master'),
     t('Asistentes'),
